@@ -313,15 +313,12 @@ epctrl.extend('Calendar', 'Control', {
 
     // 日历可变部分的渲染
     _render: function () {
-        this._clearDays();
         this._initStartEnd();
 
         var weeks = 6,
             days = 7,
             curDate = this.startDateOfMonth.clone(),
             tr;
-
-        this._renderTitle();
 
         var dtd = jQuery.Deferred(),
             start = this.startDateOfMonth.format('YYYY-MM-DD'),
@@ -345,6 +342,10 @@ epctrl.extend('Calendar', 'Control', {
         var me = this;
 
         ev.ajax.then(function () {
+            // 拿到数据后再清空 并开始新的渲染
+            this._clearDays();
+            this._renderTitle();
+
             for (var i = 0; i < weeks; ++i) {
                 tr = document.createElement('tr');
                 tr.className = 'ep-calendar-week';
