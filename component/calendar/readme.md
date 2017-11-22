@@ -1,6 +1,6 @@
 # 日历控件
 
-此日历控件是基于框架组件机制，自行实现的一个月视图日历，主要功能在于支持日历中每天的单元格中插入任意内容。
+此日历控件是基于框架组件机制，自行实现的一个月视图日历，主要功能在于支持日历中每天的单元格中插入任意内容，支持异步获取内容。
 
 - [在线演示](https://cdswyda.github.io/component-frame/component/calendar/demo/calendar.html)
 - [说明文档](https://github.com/cdswyda/component-frame/tree/master/component/calendar)
