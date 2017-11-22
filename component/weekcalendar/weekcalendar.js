@@ -437,29 +437,6 @@ epctrl.extend('WeekCalendar', 'Control', {
             categorys: this._categoryIndexs
         });
 
-        // if (!ev.ajax) {
-        //     var dtd = jQuery.Deferred();
-        //     ev.ajax = dtd.promise();
-        //     dtd.resolve();
-        // }
-
-        // var me = this;
-
-        // ev.ajax.then(function () {
-        //     me._renderCalendarTitle();
-        //     me._renderWeeks();
-
-        //     // 渲染完成
-        //     me.fire('afterDateRender', {
-        //         startDate: start,
-        //         endDate: end,
-        //         ajax: ev.ajax
-        //     });
-        // }, function () {
-        //     me._renderCalendarTitle();
-        //     me._renderWeeks();
-        //     me.throwError('指定ajax执行中出错！');
-        // });
     },
 
     // 绘制头部标题
@@ -522,19 +499,6 @@ epctrl.extend('WeekCalendar', 'Control', {
     _initEvent: function () {
         var me = this;
 
-        // jQuery(this.el).on('click', '.ep-weekcalendar-content-row', function (e) {
-        //     console.log(e);
-        //     var x = e.pageX;
-        //     var j = (x - jQuery(me._gridEl).offset().left) / ($(me._gridEl).width() / 7) >> 0;
-
-        //     var i = this.getAttribute('data-i');
-
-        //     console.log(j);
-
-        //     console.log('categoryId', me._categoryIndexs[i]);
-        //     console.log('date',me._dateRecords[j].format('YYYY-MM-DD'));
-        // });
-
         // 点击的行索引
         var row,
             // 开始列索引
@@ -549,8 +513,7 @@ epctrl.extend('WeekCalendar', 'Control', {
             // 网格左侧宽度
             gridLeft,
             // 每列的宽度
-            columnWidth,
-            mousemoveTimer;
+            columnWidth;
         jQuery(this.el)
             // 按下鼠标 记录分类和开始列
             .on('mousedown.weekcalendar', '.ep-weekcalendar-content-row', function (e) {
@@ -642,7 +605,6 @@ epctrl.extend('WeekCalendar', 'Control', {
                 // 当前列索引
                 var currColumn;
 
-                // mousemoveTimer = setTimeout(function () {
                 currColumn = (e.pageX - gridLeft) / columnWidth >> 0;
 
                 // 修正溢出
@@ -658,30 +620,6 @@ epctrl.extend('WeekCalendar', 'Control', {
                 do {
                     $columns.eq(start).addClass(me._selectedCls);
                 } while (++start <= end);
-
-
-                // if (currColumn == columnStart) {
-                //     $columns.eq(currColumn).siblings().removeClass(me._selectedCls);
-                // }
-                // else if(currColumn > columnStart) {
-                //     // $columns.gt(columnStart - 1).add($columns.lt(currColumn + 1))
-                //     //     .addClass(me._selectedCls)
-                //     //     .siblings().removeClass(me._selectedCls);
-
-                //     $columns.removeClass(me._selectedCls);
-                //     $columns.filter(':gt(' + (columnStart - 1) + '):lt(' + currColumn + ')').addClass(me._selectedCls);
-
-                // } else {
-                //     // $columns.gt(currColumn - 1).add($columns.lt(columnStart + 1))
-                //     //     .addClass(me._selectedCls)
-                //     //     .siblings().removeClass(me._selectedCls);
-
-                //     $columns.removeClass(me._selectedCls);
-                //     $columns.filter(':gt(' + (currColumn - 1) + '),:lt(' + columnStart + ')')
-                //         .addClass(me._selectedCls);
-                // }
-
-                // }, 10);
 
             })
             // 鼠标松开
