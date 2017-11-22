@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div id="date" style="width:500px;height:600px;margin:10px auto;"></div>
+    <div id="date" style="width:900px;height:600px;margin:10px auto;"></div>
     <script src="../../../lib/jquery.min.js"></script>
     <script src="../../../component/base.js"></script>
     <script src="../../../component/calendar/calendar.js"></script>
@@ -62,7 +62,7 @@
         testCalendar.on('cellRender', function (e) {
             console.log(e);
             if (!e.isHeader) {
-                e.extraHtml = '<div style="color:#c0c0c0;">' + e.dateText + '号，会不会放假呢？</div>';
+                e.extraHtml = '<div style="color:#c0c0c0;">' + e.dateText + '号，放假不？</div>';
             }
         });
         testCalendar.on('dayClick', function (e) {
