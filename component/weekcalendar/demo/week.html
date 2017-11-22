@@ -93,7 +93,7 @@
 
                 },
                 // 部件重叠时触发
-                widgetOccupid: function (e) {
+                widgetOccupied: function (e) {
                     // 冲突时禁止继续添加
                     console.error(e.widgetData.categoryId + '分类下id为' + e.widgetData.id + '的部件和现有部件有重叠，取消添加');
                     e.cancel = true;
@@ -134,7 +134,7 @@
                     });
                 },
                 // 部件重叠时触发
-                widgetOccupid: function (e) {
+                widgetOccupied: function (e) {
 
                     console.log('发生重叠');
                     console.log('当前', e.currWidget);
