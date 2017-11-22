@@ -1,0 +1,47 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": false,
+        "node": false
+    },
+    // 使用默认的配置
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "script"
+    },
+    "globals": {
+        // 是否允许被重写
+        "jQuery": false,
+        "$": false,
+        "mini": false,
+        "Util": false,
+        "epoint": false
+    },
+    // [中文文档: http://eslint.cn/docs/rules/ ](http://eslint.cn/docs/rules/)
+    "rules": {
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn",
+        "no-delete-var": "warn",
+        // 分号警告
+        "semi": "warn",
+        // 单引号警告
+        "quotes": ["warn", "single"],
+        // 强制所有控制语句使用一致的括号风格
+        "curly": "warn",
+        // 要求 switch 语句中有 default 分支
+        "default-case": "warn",
+
+        "no-multiple-empty-lines": "warn",
+        "no-console": "off",
+        "no-empty": "off"
+    }
+}
