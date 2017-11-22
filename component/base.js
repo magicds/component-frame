@@ -454,7 +454,7 @@
                 // 多个css时 id 为 style-当前控件类型-i
                 link.id = 'style-' + this.type + (l > 1 ? '-' + i : '');
 
-                link.href =epctrl._rootPath + '/' + urls[i];
+                link.href = epctrl._rootPath + '/' + urls[i];
 
                 if (!target) {
                     head.appendChild(link);
@@ -488,7 +488,7 @@
             var that = this;
 
             return $.ajax({
-                url:  epctrl._rootPath + '/' + url,
+                url: epctrl._rootPath + '/' + url,
                 type: 'GET',
                 async: true,
                 dataType: 'HTML'
@@ -691,7 +691,7 @@
 
     win.epctrl = {
         // 组件存放的目录
-        _rootPath:'/component',
+        _rootPath: '/component',
         /**
          * 继承实现
          *
