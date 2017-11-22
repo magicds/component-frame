@@ -206,9 +206,9 @@ component
   - 通常一种控件是否需要换肤在开发时就可以确定，因此开发者应该在开发时为此控件指定好此属性，需要皮肤的情况下，在资源加载前，会自动获取当前皮肤并加载。
   - 如果需要切换皮肤，必须提供相应的皮肤资源，皮肤资源组织结构参考上面的控件资源组织结构。
 - 关于 `setCss()`、`setJs` 方法 和 `addCss()` 、 `addJs()` 方法的作用和区别。
-  -  都是为控件指定需要的css和js资源。
-  -  直接使用 `this.setCss()` 和 `this.setCss()` 时，参数为一个字符串或数组，值为资源路径，表示直接为此控件指定所需要的css和js资源。
-  -  使用 `this.addCss()` 和 `this.addJs()` 方法，传递一个资源的路径时，此时是在父类css或js资源的基础上新加入指定的css或js文件。
+  - 都是为控件指定需要的css和js资源。
+  - 直接使用 `this.setCss()` 和 `this.setCss()` 时，参数为一个字符串或数组，值为资源路径，表示直接为此控件指定所需要的css和js资源。
+  - 使用 `this.addCss()` 和 `this.addJs()` 方法，传递一个资源的路径时，此时是在父类css或js资源的基础上新加入指定的css或js文件。
 
 **关于用户使用时配置的约定**
 
@@ -244,13 +244,12 @@ epctrl.extend('Calendar', 'Control', {
 **构造函数**
 
 1. 首先在控件机制的命名空间下新增一个名为 `Calendar` 的构造函数，参数为此控件的配置。
-
-2. 在构造函数内部首先调用此控件的 `superclass.constructor` 方法，作用为先执行一遍父类的构造函数，固定写法为:  `epctrl.新增的控件.superclass.constructor.apply(this, arguments)` ， 此处的Calendar控件，即：`epctrl.Calendar.superclass.constructor.apply(this, arguments);`
+1. 在构造函数内部首先调用此控件的 `superclass.constructor` 方法，作用为先执行一遍父类的构造函数，固定写法为:  `epctrl.新增的控件.superclass.constructor.apply(this, arguments)` ， 此处的Calendar控件，即：`epctrl.Calendar.superclass.constructor.apply(this, arguments);`
 
 **继承关系**
 
 1. 直接调用 `epctrl.extend`  方法，第一个参数为当前控件的名称，第二个参数为父类控件的名称，第三个参数为要新增或覆盖的属性、方法集合。
-2. 在第三个参数中，必须有 `type` 属性和 `create()` 方法，`type` 属性用于唯一标识当前控件的名称，值为一个字符串，约定值和当前控件构造函数名称相同；`create()` 方法为此控件的真实创建方法。
+1. 在第三个参数中，必须有 `type` 属性和 `create()` 方法，`type` 属性用于唯一标识当前控件的名称，值为一个字符串，约定值和当前控件构造函数名称相同；`create()` 方法为此控件的真实创建方法。
 
 ## 继承已有控件创建一个新的控件
 
