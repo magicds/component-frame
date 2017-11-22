@@ -10,6 +10,7 @@
         pre {
             color: #fff;
         }
+
     </style>
 </head>
 
@@ -30,6 +31,7 @@
             events: {
                 beforeSourceLoad: function (e) {
                     console.log(e);
+                    // 加载资源前可以再加入一些自己的其他资源
                     e.cssUrl.push('./test.css');
                 },
                 afterLoadSource: testFn
@@ -60,7 +62,7 @@
         testCalendar.on('cellRender', function (e) {
             console.log(e);
             if (!e.isHeader) {
-                e.extraHtml = '<div style="background:#f2f2f2;">xx</div>';
+                e.extraHtml = '<div style="color:#c0c0c0;">' + e.dateText + '号，会不会放假呢？</div>';
             }
         });
         testCalendar.on('dayClick', function (e) {
@@ -69,6 +71,7 @@
         testCalendar.on('dayHeaderClick', function (e) {
             console.log(e);
         });
+
     </script>
 </body>
 
