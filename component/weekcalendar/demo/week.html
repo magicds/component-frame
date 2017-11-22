@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <title>二维周视图日历</title>
+    <style>
+        body {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="week-calendar" style="width:100%;height:80vh"></div>
+    <div id="week-calendar1" style="width:80%;height:80vh"></div>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script src="../../../lib/mock-min.js"></script>
+    <script src="./test.js"></script>
+    <script src="../../../component/base.js"></script>
+    <script src="../../../component/weekcalendar/weekcalendar.js"></script>
+    <script>
+        // 指定组件存放的根目录
+        epctrl._rootPath = '/component';
+
+        var ajaxCache;
+
+        function getData(data) {
+            if (ajaxCache) {
+                // 终止上一次的请求
+                ajaxCache.abort();
+            }
+
+            ajaxCache = $.ajax({
+                url: './test.json',
+                type: 'POST',
+                dataType: 'json',
+                data: data
+            });
+            return ajaxCache;
+        }
+
+        function getData2(data) {
+            return $.ajax({
+                url: './test.json',
+                type: 'POST',
+                dataType: 'json',
+                data: data
+            });
+        }
+
+        var calendar = epctrl.init('WeekCalendar', {
+            el: '#week-calendar',
+            categoryTitle: '车辆',
+            category: [{
+                id: 'cate-1',
+                name: '法拉利',
+                content: '苏E00000'
+            }, {
+                id: 'cate-2',
+                name: 'Lamborghini',
+                content: '苏E00001'
+            }, {
+                id: 'cate-3',
+                name: '捷豹',
+                content: '苏E00002'
+            }, {
+                id: 'cate-4',
+                name: '宾利',
+                content: '苏E00003'
+            }, {
+                id: 'cate-5',
+                name: 'SSC',
+                content: '苏E00004'
+            }],
+            events: {
+                // 日期变化时触发
+                dateChanged: function (e) {
+                    var data = {
+                        start: e.startDate,
+                        end: e.endDate,
+                    };
+
+                    getData(data).done(function (data) {
+                        // console.log(JSON.stringify(data));
+                        $.each(data, function (i, item) {
+                            calendar.addWidget(item);
+                        });
+                    })
+
+                },
+                // 部件重叠时触发
+                widgetOccupid: function (e) {
+                    // 冲突时禁止继续添加
+                    console.error(e.widgetData.categoryId + '分类下id为' + e.widgetData.id + '的部件和现有部件有重叠，取消添加');
+                    e.cancel = true;
+                }
+            }
+        });
+
+
+        var calendar1 = epctrl.init('WeekCalendar', {
+            el: '#week-calendar1',
+            dayStartFromSunday: true,
+            categoryTitle: '车辆',
+            category: [{
+                id: 'cate-1',
+                name: '大众',
+                content: '苏A00000'
+            }, {
+                id: 'cate-2',
+                name: '雷诺',
+                content: '苏A00001'
+            }, {
+                id: 'cate-3',
+                name: '红旗',
+                content: '苏A00003'
+            }],
+            events: {
+                dateChanged: function (e) {
+                    var data = {
+                        start: e.startDate,
+                        end: e.endDate,
+                    };
+
+                    getData2(data).done(function (data) {
+                        // console.log(JSON.stringify(data));
+                        $.each(data, function (i, item) {
+                            calendar1.addWidget(item);
+                        });
+                    });
+                },
+                // 部件重叠时触发
+                widgetOccupid: function (e) {
+
+                    console.log('发生重叠');
+                    console.log('当前', e.currWidget);
+                    console.log('重叠', e.occupidWidgets);
+
+                    // 重叠时高度20错开
+                    e.currWidget.style.top = e.occupidWidgets.length * 24 + 'px';
+                }
+            }
+        });
+
+        calendar.on('dateClick', function (e) {
+            alert(JSON.stringify({
+                '开始时间': e.startDate,
+                '结束时间': e.endDate,
+                '分类id': e.categoryId,
+                '行索引': e.rowIndex,
+                '列索引范围': e.columnIndexs
+            }, 0, 4));
+        });
+        calendar.on('widgetClick', function (e) {
+            console.log(e);
+        });
+    </script>
+</body>
+
+</html>
