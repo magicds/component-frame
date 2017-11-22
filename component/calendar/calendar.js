@@ -343,8 +343,8 @@ epctrl.extend('Calendar', 'Control', {
 
         ev.ajax.then(function () {
             // 拿到数据后再清空 并开始新的渲染
-            this._clearDays();
-            this._renderTitle();
+            me._clearDays();
+            me._renderTitle();
 
             for (var i = 0; i < weeks; ++i) {
                 tr = document.createElement('tr');
