@@ -1,0 +1,345 @@
+.ep-calendar {
+    position: relative;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+
+    border: 1px solid #d2d7dd;
+}
+
+
+/* 头部 */
+
+.ep-calendar-header {
+    position: relative;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #d2d7dd;
+}
+
+.ep-calendar-header:after,
+.ep-calendar-header-center:after {
+    display: table;
+    clear: both;
+
+    content: "";
+}
+
+.ep-calendar-header-left {
+    float: left;
+}
+
+.ep-calendar-header-right {
+    float: right;
+}
+
+.ep-calendar-header-center {
+    line-height: 30px;
+
+    display: inline-block;
+
+    margin-top: 9px;
+}
+
+.ep-calendar-header-btn,
+.ep-calendar-title {
+    float: left;
+
+    cursor: pointer;
+}
+
+.ep-calendar-btn-prev,
+.ep-calendar-btn-next {
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.ep-calendar-btn-prev {
+    background-image: url("./images/btn-prev.png");
+}
+
+.ep-calendar-btn-next {
+    background-image: url("./images/btn-next.png");
+}
+
+
+/* 主体部分 */
+
+.ep-calendar-body {
+    width: 100%;
+
+    table-layout: fixed;
+}
+
+
+/* 星期 */
+
+.ep-calendar-daysheader {
+    line-height: 30px;
+
+    height: 30px;
+}
+
+.ep-calendar-day,
+.ep-calendar-date {
+    width: 14.285%;
+
+    text-align: center;
+}
+
+
+/* 日期 */
+
+.ep-calendar-dates {
+    /*  */
+}
+
+.ep-calendar-date-inner {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+.ep-calendar-week {
+    line-height: 30px;
+
+    height: 30px;
+}
+
+.ep-calendar-date {
+    overflow: hidden;
+
+    padding: 0 3px;
+
+    text-align: center;
+    vertical-align: top;
+
+    color: #333;
+}
+
+.ep-calendar-date .ep-calendar-date-text {
+    line-height: 20px;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    border: 1px solid transparent;
+}
+
+.ep-calenday-weekend .ep-calendar-date-text {
+    color: #e02d2d;
+}
+
+.ep-calendar-othermonth .ep-calendar-date-text {
+    color: #999;
+}
+
+.ep-calendar-today .ep-calendar-date-text {
+    color: #fff;
+    border-color: #56b1ff;
+    background: #56b1ff;
+}
+
+.ep-calendar-selected .ep-calendar-date-text {
+    border-color: #56b1ff;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
+
+.ep-calendar-menu {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+
+    display: none;
+
+    width: 220px;
+    height: 226px;
+    margin-left: -110px;
+
+    text-align: center;
+
+    border: 1px solid #d5dae1;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 2px 3px rgba(0,0,0,.15);
+            box-shadow: 0 2px 3px rgba(0,0,0,.15);
+}
+.ep-calendar-menu.show {
+    display: block;
+}
+.ep-calendar-menu-months {
+    line-height: 24px;
+
+    display: block;
+
+    margin: 10px 14px;
+}
+.ep-calendar-menu-months:after,
+.ep-calendar-menu-years-inner:after {
+    display: table;
+    clear: both;
+
+    content: "";
+}
+.ep-calendar-menu-month {
+    font-family: Tahoma,Verdana,å®‹ä½“;
+    font-size: 9pt;
+
+    float: left;
+
+    width: 26px;
+    height: 24px;
+    margin: 0 10px 4px;
+
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
+.ep-calendar-menu-month.selected,
+.ep-calendar-menu-month:hover {
+    color: #f96d41;
+    border-color: #f9a68c;
+    background: #fff7f4;
+}
+.ep-calendar-menu-years {
+    position: relative;
+
+    height: 56px;
+    margin: 0;
+    padding: 10px 15px;
+
+    background: #f6f6f6;
+}
+.ep-calendar-prev-year,
+.ep-calendar-next-year {
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 15px;
+    height: 15px;
+    margin-top: -8px;
+
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.ep-calendar-prev-year {
+    left: 0;
+
+    background-image: url("./images/btn-prev.png");
+}
+.ep-calendar-next-year {
+    right: 0;
+
+    background-image: url("./images/btn-next.png");
+}
+
+.ep-calendar-menu-year {
+    font-family: Tahoma,Verdana,å®‹ä½“;
+    font-size: 9pt;
+    line-height: 20px;
+
+/* display: inline; */
+
+    float: left;
+
+    width: 32px;
+    height: 21px;
+    margin: 0 1px 4px;
+    padding: 1px;
+
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
+.ep-calendar-menu-year.selected,
+.ep-calendar-menu-year:hover {
+    color: #fff;
+    border-color: #f96d41;
+    background: #f96d41;
+}
+.ep-calendar-menu-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 24px;
+    padding: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    text-align: center;
+
+    border-top: 1px solid #e6e7eb;
+    background: #f6f6f6;
+}
+.ep-calendar-okbtn,
+.ep-calendar-cancelbtn {
+    line-height: 14px;
+
+    display: inline-block;
+
+    width: 52px;
+    margin: 0 3px;
+    padding: 5px 0;
+
+    cursor: pointer;
+    -webkit-transition: all .6s cubic-bezier(.175,.885,.32,1);
+       -moz-transition: all .6s cubic-bezier(.175,.885,.32,1);
+         -o-transition: all .6s cubic-bezier(.175,.885,.32,1);
+            transition: all .6s cubic-bezier(.175,.885,.32,1);
+
+    color: #fff;
+    border: 1px solid transparent;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
+.ep-calendar-okbtn {
+    border-color: #f96d41;
+    background-color: #f96d41;
+}
+.ep-calendar-okbtn:hover {
+    border-color: #f97e41;
+    background-color: #f97e41;
+}
+.ep-calendar-cancelbtn {
+    border-color: #59c2e6;
+    background-color: #59c2e6;
+}
+.ep-calendar-cancelbtn:hover {
+    border-color: #51b6d9;
+    background-color: #51b6d9;
+}
